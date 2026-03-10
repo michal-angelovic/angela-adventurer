@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgameworld"]
+
+[ext_resource type="PackedScene" uid="uid://bplayer001" path="res://scenes/player/player.tscn" id="1_player"]
+[ext_resource type="PackedScene" uid="uid://bpistol001" path="res://scenes/weapons/pistol.tscn" id="2_pistol"]
+[ext_resource type="PackedScene" uid="uid://bspawner01" path="res://scenes/enemies/enemy_spawner.tscn" id="3_spawner"]
+[ext_resource type="PackedScene" uid="uid://bhud00001" path="res://scenes/ui/hud.tscn" id="4_hud"]
+
+[node name="GameWorld" type="Node2D"]
+
+[node name="GroundLayer" type="TileMapLayer" parent="."]
+
+[node name="WallLayer" type="TileMapLayer" parent="."]
+
+[node name="ObjectLayer" type="Node2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("1_player")]
+position = Vector2(640, 360)
+
+[node name="Pistol" parent="Player/WeaponPivot" instance=ExtResource("2_pistol")]
+
+[node name="EnemySpawner" parent="." instance=ExtResource("3_spawner")]
+
+[node name="HUD" parent="." instance=ExtResource("4_hud")]

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpistol001"]
+
+[ext_resource type="Script" path="res://scripts/weapons/weapon.gd" id="1_weapon"]
+[ext_resource type="PackedScene" uid="uid://bbullet001" path="res://scenes/weapons/bullet.tscn" id="2_bullet"]
+
+[node name="Pistol" type="Node2D"]
+script = ExtResource("1_weapon")
+bullet_scene = ExtResource("2_bullet")
+fire_rate = 0.3
+bullet_speed = 800.0
+damage = 25.0
+max_ammo = 12
+reload_time = 1.5
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(20, 0)
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(40, 0)

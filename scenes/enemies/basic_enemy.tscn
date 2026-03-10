@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://benemy001"]
+
+[ext_resource type="Script" path="res://scripts/enemies/enemy.gd" id="1_enemy"]
+[ext_resource type="Script" path="res://scripts/enemies/enemy_contact.gd" id="2_contact"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_enemy"]
+radius = 18.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hurtbox"]
+radius = 20.0
+
+[node name="BasicEnemy" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 1
+script = ExtResource("1_enemy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_enemy")
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("2_contact")
+
+[node name="HurtBoxShape" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_hurtbox")
