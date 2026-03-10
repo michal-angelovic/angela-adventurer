@@ -29,9 +29,13 @@ func _physics_process(_delta: float) -> void:
 func take_damage(amount: float) -> void:
 	current_health -= amount
 
-	# Flash white on hit
-	var sprite := get_node_or_null("Sprite2D")
-	if sprite:
+	# Hit flash using shader
+	var sprite := get_node_or_null("Sprite2D") as Sprite2D
+	if sprite and sprite.material is ShaderMaterial:
+		var mat := sprite.material as ShaderMaterial
+		var tween := create_tween()
+		tween.tween_method(func(val: float) -> void: mat.set_shader_parameter("flash_amount", val), 1.0, 0.0, 0.15)
+	elif sprite:
 		var tween := create_tween()
 		tween.tween_property(sprite, "modulate", Color.RED, 0.05)
 		tween.tween_property(sprite, "modulate", Color.WHITE, 0.1)
@@ -40,5 +44,6 @@ func take_damage(amount: float) -> void:
 		die()
 
 func die() -> void:
+	CameraShaker.shake(4.0, 0.15)
 	died.emit(self)
 	queue_free()

@@ -32,6 +32,9 @@ func take_damage(amount: float) -> void:
 	is_invincible = true
 	invincibility_timer.start(invincibility_duration)
 
+	# Screen shake on damage
+	CameraShaker.shake(6.0, 0.2)
+
 	# Visual feedback — flash the player sprite
 	var sprite := get_parent().get_node_or_null("Sprite2D")
 	if sprite:

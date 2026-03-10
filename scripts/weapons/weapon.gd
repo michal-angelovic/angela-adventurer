@@ -48,7 +48,38 @@ func shoot() -> void:
 	bullet.damage = damage
 	get_tree().current_scene.add_child(bullet)
 
+	# Muzzle flash
+	_show_muzzle_flash()
+
+	# Light screen shake on shoot
+	CameraShaker.shake(2.0, 0.05)
+
 	cooldown_timer.start(fire_rate)
+
+func _show_muzzle_flash() -> void:
+	var flash := GPUParticles2D.new()
+	flash.emitting = true
+	flash.one_shot = true
+	flash.amount = 8
+	flash.lifetime = 0.15
+	flash.explosiveness = 1.0
+
+	var mat := ParticleProcessMaterial.new()
+	mat.direction = Vector3(1, 0, 0)
+	mat.spread = 25.0
+	mat.initial_velocity_min = 100.0
+	mat.initial_velocity_max = 200.0
+	mat.scale_min = 2.0
+	mat.scale_max = 4.0
+	mat.color = Color(1.0, 0.9, 0.3)
+	flash.process_material = mat
+
+	flash.global_position = muzzle.global_position
+	flash.global_rotation = muzzle.global_rotation
+	get_tree().current_scene.add_child(flash)
+
+	# Auto-cleanup after particles finish
+	get_tree().create_timer(0.5).timeout.connect(flash.queue_free)
 
 func reload() -> void:
 	if is_reloading or current_ammo == max_ammo:

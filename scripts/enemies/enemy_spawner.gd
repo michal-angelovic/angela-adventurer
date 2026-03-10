@@ -22,15 +22,15 @@ func _on_spawn_timer_timeout() -> void:
 	if enemy_count >= max_enemies:
 		return
 
-	var player := get_tree().get_first_node_in_group("player")
+	var player: Node2D = get_tree().get_first_node_in_group("player") as Node2D
 	if not is_instance_valid(player):
 		return
 
 	# Spawn at random position around the player
-	var angle := randf() * TAU
-	var spawn_pos := player.global_position + Vector2.RIGHT.rotated(angle) * spawn_distance
+	var angle: float = randf() * TAU
+	var spawn_pos: Vector2 = player.global_position + Vector2.RIGHT.rotated(angle) * spawn_distance
 
-	var enemy := enemy_scene.instantiate()
+	var enemy: Node2D = enemy_scene.instantiate() as Node2D
 	enemy.global_position = spawn_pos
 	enemy.died.connect(_on_enemy_died)
 	get_parent().add_child(enemy)

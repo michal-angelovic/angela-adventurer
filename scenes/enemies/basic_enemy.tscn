@@ -1,7 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://benemy001"]
+[gd_scene format=3 uid="uid://benemy001"]
 
-[ext_resource type="Script" path="res://scripts/enemies/enemy.gd" id="1_enemy"]
-[ext_resource type="Script" path="res://scripts/enemies/enemy_contact.gd" id="2_contact"]
+[ext_resource type="Script" uid="uid://b61hspk3ixwcw" path="res://scripts/enemies/enemy.gd" id="1_enemy"]
+[ext_resource type="Shader" uid="uid://1emebaufw0w4" path="res://resources/shaders/hit_flash.gdshader" id="2_4mpuu"]
+[ext_resource type="Script" uid="uid://br64vp6rydd88" path="res://scripts/enemies/enemy_contact.gd" id="2_contact"]
+[ext_resource type="Texture2D" uid="uid://bn7a4cp7lxrrv" path="res://scenes/enemies/zoimbie1_stand.png" id="2_ibjif"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wsh5r"]
+shader = ExtResource("2_4mpuu")
+shader_parameter/flash_amount = 0.0
+shader_parameter/flash_color = Color(1, 1, 1, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_enemy"]
 radius = 18.0
@@ -9,20 +16,21 @@ radius = 18.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_hurtbox"]
 radius = 20.0
 
-[node name="BasicEnemy" type="CharacterBody2D"]
+[node name="BasicEnemy" type="CharacterBody2D" unique_id=600690254]
 collision_layer = 4
-collision_mask = 1
 script = ExtResource("1_enemy")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=15941521]
+material = SubResource("ShaderMaterial_wsh5r")
+texture = ExtResource("2_ibjif")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1787708251]
 shape = SubResource("CircleShape2D_enemy")
 
-[node name="HurtBox" type="Area2D" parent="."]
+[node name="HurtBox" type="Area2D" parent="." unique_id=703294907]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("2_contact")
 
-[node name="HurtBoxShape" type="CollisionShape2D" parent="HurtBox"]
+[node name="HurtBoxShape" type="CollisionShape2D" parent="HurtBox" unique_id=1683516858]
 shape = SubResource("CircleShape2D_hurtbox")
