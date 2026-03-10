@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dcvh0n5tyoh6b"
-path="res://.godot/imported/tile_369.png-1f9325b4bbebb1b7279e195b4eb470a7.ctex"
+uid="uid://bxdivs71tufmy"
+path="res://.godot/imported/manBlue_shotgun.png-569d15a9e5a8b1fd487f1fd7ba666425.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/weapons/tile_369.png"
-dest_files=["res://.godot/imported/tile_369.png-1f9325b4bbebb1b7279e195b4eb470a7.ctex"]
+source_file="res://assets/sprites/player/manBlue_shotgun.png"
+dest_files=["res://.godot/imported/manBlue_shotgun.png-569d15a9e5a8b1fd487f1fd7ba666425.ctex"]
 
 [params]
 

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b61hspk3ixwcw" path="res://scripts/enemies/enemy.gd" id="1_enemy"]
 [ext_resource type="Shader" uid="uid://1emebaufw0w4" path="res://resources/shaders/hit_flash.gdshader" id="2_4mpuu"]
 [ext_resource type="Script" uid="uid://br64vp6rydd88" path="res://scripts/enemies/enemy_contact.gd" id="2_contact"]
-[ext_resource type="Texture2D" uid="uid://bn7a4cp7lxrrv" path="res://scenes/enemies/zoimbie1_stand.png" id="2_ibjif"]
+[ext_resource type="Texture2D" uid="uid://cu3bcrv0jaeqn" path="res://assets/sprites/enemies/zoimbie1_hold.png" id="3_4mpuu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wsh5r"]
 shader = ExtResource("2_4mpuu")
@@ -22,7 +22,7 @@ script = ExtResource("1_enemy")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=15941521]
 material = SubResource("ShaderMaterial_wsh5r")
-texture = ExtResource("2_ibjif")
+texture = ExtResource("3_4mpuu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1787708251]
 shape = SubResource("CircleShape2D_enemy")

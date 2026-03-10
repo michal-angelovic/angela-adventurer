@@ -2,8 +2,10 @@
 
 [ext_resource type="Script" uid="uid://vxcsstr2ua78" path="res://scripts/player/player.gd" id="1_player"]
 [ext_resource type="Script" uid="uid://bfh41vf48galr" path="res://scripts/player/player_health.gd" id="2_health"]
-[ext_resource type="Texture2D" uid="uid://cmnaiurnxayts" path="res://scenes/player/manBlue_hold.png" id="2_lvxji"]
+[ext_resource type="Texture2D" uid="uid://cmnaiurnxayts" path="res://assets/sprites/player/manBlue_hold.png" id="2_lvxji"]
 [ext_resource type="PackedScene" uid="uid://bpistol001" path="res://scenes/weapons/pistol.tscn" id="3_gmlin"]
+[ext_resource type="PackedScene" uid="uid://cj8txuoy0otiy" path="res://scenes/weapons/shotgun.tscn" id="5_75vfm"]
+[ext_resource type="PackedScene" uid="uid://b7i86rc6t4xaw" path="res://scenes/weapons/rifle.tscn" id="6_0owmy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_player"]
 radius = 20.0
@@ -23,7 +25,13 @@ position_smoothing_enabled = true
 
 [node name="PlayerHealth" type="Node" parent="." unique_id=552863134]
 script = ExtResource("2_health")
+max_health = null
+invincibility_duration = null
 
 [node name="WeaponPivot" type="Node2D" parent="." unique_id=100982653]
 
 [node name="Pistol" parent="WeaponPivot" unique_id=1690205185 instance=ExtResource("3_gmlin")]
+
+[node name="Shotgun" parent="WeaponPivot" unique_id=1334101335 instance=ExtResource("5_75vfm")]
+
+[node name="Rifle" parent="WeaponPivot" unique_id=340812277 instance=ExtResource("6_0owmy")]

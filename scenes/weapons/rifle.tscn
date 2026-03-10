@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://b7i86rc6t4xaw"]
+
+[ext_resource type="Script" uid="uid://b8bfr3n6k2ru1" path="res://scripts/weapons/weapon.gd" id="1_weapon"]
+[ext_resource type="PackedScene" uid="uid://driflebullet01" path="res://scenes/weapons/rifle_bullet.tscn" id="2_bullet"]
+[ext_resource type="Texture2D" uid="uid://wxodealyhhib" path="res://assets/sprites/weapons/weapon_silencer.png" id="3_sg1yr"]
+[ext_resource type="AudioStream" uid="uid://8di1rajd16pd" path="res://assets/audio/sfx/assault_rifle.mp3" id="4_sfx"]
+
+[node name="Rifle" type="Node2D" unique_id=340812277]
+script = ExtResource("1_weapon")
+weapon_name = "Rifle"
+shoot_sound = ExtResource("4_sfx")
+bullet_scene = ExtResource("2_bullet")
+fire_rate = 0.12
+bullet_speed = 1000.0
+damage = 12.0
+max_ammo = 30
+reload_time = 2.5
+bullet_lifetime = 3.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=51491660]
+position = Vector2(25, 0)
+texture = ExtResource("3_sg1yr")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=901268308]
+position = Vector2(45, 0)

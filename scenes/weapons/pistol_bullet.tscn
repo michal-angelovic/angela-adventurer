@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://bkkpyvqbni433"]
+
+[ext_resource type="Script" uid="uid://bvbigoe24y0mi" path="res://scripts/weapons/bullet.gd" id="1_bullet"]
+[ext_resource type="Texture2D" uid="uid://wj82xk0agcfr" path="res://assets/sprites/projectiles/Pistol-AR/PistolPNGs/Pistol-AR1.png" id="2_f1"]
+[ext_resource type="Texture2D" uid="uid://dh2lomapufkrd" path="res://assets/sprites/projectiles/Pistol-AR/PistolPNGs/Pistol-AR2.png" id="3_f2"]
+[ext_resource type="Texture2D" uid="uid://cm6d6pue40pqb" path="res://assets/sprites/projectiles/Pistol-AR/PistolPNGs/Pistol-AR3.png" id="4_f3"]
+[ext_resource type="Texture2D" uid="uid://dakaxjj6bsbin" path="res://assets/sprites/projectiles/Pistol-AR/PistolPNGs/Pistol-AR4.png" id="5_f4"]
+[ext_resource type="Texture2D" uid="uid://cekoqkk8x0riw" path="res://assets/sprites/projectiles/Pistol-AR/PistolPNGs/Pistol-AR5.png" id="6_f5"]
+[ext_resource type="Texture2D" uid="uid://bcy0hmpkw3vf2" path="res://assets/sprites/projectiles/Pistol-AR/PistolPNGs/Pistol-AR6.png" id="7_f6"]
+[ext_resource type="Texture2D" uid="uid://cu07n4dxq83rw" path="res://assets/sprites/projectiles/Pistol-AR/PistolPNGs/Pistol-AR7.png" id="8_f7"]
+[ext_resource type="Texture2D" uid="uid://5i7uiu8k8w8r" path="res://assets/sprites/projectiles/Pistol-AR/PistolPNGs/Pistol-AR8.png" id="9_f8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pistol"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_f1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_f2")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_f3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_f4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_f5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_f6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_f7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_f8")
+}],
+"loop": false,
+"name": &"impact",
+"speed": 15.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bullet"]
+radius = 5.0
+
+[node name="PistolBullet" type="Area2D" unique_id=36384925]
+collision_layer = 16
+collision_mask = 5
+script = ExtResource("1_bullet")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2081994227]
+rotation = -1.5708
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_pistol")
+animation = &"fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1136132371]
+shape = SubResource("CircleShape2D_bullet")

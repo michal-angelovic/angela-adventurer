@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gds1q20ocku5"
-path="res://.godot/imported/manBlue_gun.png-6c57243308236198bdc03555ddcb168c.ctex"
+uid="uid://djf1pp06tiylv"
+path="res://.godot/imported/Snipe2.png-22c00c357ce138f77129367633d2e748.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/player/manBlue_gun.png"
-dest_files=["res://.godot/imported/manBlue_gun.png-6c57243308236198bdc03555ddcb168c.ctex"]
+source_file="res://assets/sprites/projectiles/Snipe/SnipePNGs/Snipe2.png"
+dest_files=["res://.godot/imported/Snipe2.png-22c00c357ce138f77129367633d2e748.ctex"]
 
 [params]
 

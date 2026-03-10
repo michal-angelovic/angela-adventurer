@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://btank00001"]
+
+[ext_resource type="Script" uid="uid://bkas040tx8631" path="res://scripts/enemies/tank_enemy.gd" id="1_tank"]
+[ext_resource type="Script" uid="uid://br64vp6rydd88" path="res://scripts/enemies/enemy_contact.gd" id="2_contact"]
+[ext_resource type="Texture2D" uid="uid://bn7a4cp7lxrrv" path="res://assets/sprites/enemies/zoimbie1_stand.png" id="2_oq5wy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tank"]
+radius = 24.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tank_hurt"]
+radius = 26.0
+
+[node name="TankEnemy" type="CharacterBody2D" unique_id=870189873]
+collision_layer = 4
+script = ExtResource("1_tank")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=625101720]
+modulate = Color(1, 0.4, 0.4, 1)
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("2_oq5wy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=685823975]
+shape = SubResource("CircleShape2D_tank")
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=1227090820]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("2_contact")
+damage = 25.0
+
+[node name="HurtBoxShape" type="CollisionShape2D" parent="HurtBox" unique_id=1505960379]
+shape = SubResource("CircleShape2D_tank_hurt")

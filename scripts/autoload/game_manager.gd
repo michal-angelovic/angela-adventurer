@@ -19,4 +19,8 @@ func trigger_game_over() -> void:
 func restart_game() -> void:
 	score = 0
 	is_game_over = false
-	get_tree().reload_current_scene()
+	get_tree().change_scene_to_file("res://scenes/world/game_world.tscn")
+
+func reset() -> void:
+	score = 0
+	is_game_over = false

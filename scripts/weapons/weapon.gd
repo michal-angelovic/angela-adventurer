@@ -1,13 +1,20 @@
 extends Node2D
 
 signal ammo_changed(current_ammo: int, max_ammo: int)
+signal reload_started(duration: float)
+signal reload_cancelled()
 
+@export var weapon_name: String = "Pistol"
+@export var shoot_sound: AudioStream
 @export var bullet_scene: PackedScene
 @export var fire_rate: float = 0.3
 @export var bullet_speed: float = 800.0
 @export var damage: float = 25.0
 @export var max_ammo: int = 12
 @export var reload_time: float = 1.5
+@export var bullet_count: int = 1
+@export var spread_angle: float = 0.0
+@export var bullet_lifetime: float = 2.0
 
 var current_ammo: int
 var can_shoot: bool = true
@@ -40,16 +47,27 @@ func shoot() -> void:
 	current_ammo -= 1
 	ammo_changed.emit(current_ammo, max_ammo)
 
-	# Spawn bullet
-	var bullet := bullet_scene.instantiate()
-	bullet.global_position = muzzle.global_position
-	bullet.global_rotation = muzzle.global_rotation
-	bullet.speed = bullet_speed
-	bullet.damage = damage
-	get_tree().current_scene.add_child(bullet)
+	# Spawn bullet(s)
+	var base_rotation: float = muzzle.global_rotation
+	for i in bullet_count:
+		var bullet := bullet_scene.instantiate()
+		bullet.global_position = muzzle.global_position
+		if bullet_count > 1:
+			var offset: float = lerp(-spread_angle, spread_angle, float(i) / float(bullet_count - 1))
+			bullet.global_rotation = base_rotation + deg_to_rad(offset)
+		else:
+			bullet.global_rotation = base_rotation
+		bullet.speed = bullet_speed
+		bullet.damage = damage
+		bullet.lifetime = bullet_lifetime
+		get_tree().current_scene.add_child(bullet)
 
 	# Muzzle flash
 	_show_muzzle_flash()
+
+	# Shoot sound (dedicated channel — restarts each shot, no pool exhaustion)
+	if shoot_sound:
+		SoundManager.play_weapon_sfx(shoot_sound)
 
 	# Light screen shake on shoot
 	CameraShaker.shake(2.0, 0.05)
@@ -86,6 +104,14 @@ func reload() -> void:
 		return
 	is_reloading = true
 	reload_timer.start(reload_time)
+	reload_started.emit(reload_time)
+
+func cancel_reload() -> void:
+	if not is_reloading:
+		return
+	is_reloading = false
+	reload_timer.stop()
+	reload_cancelled.emit()
 
 func add_ammo(amount: int) -> void:
 	current_ammo = min(current_ammo + amount, max_ammo)
@@ -99,3 +125,4 @@ func _on_reload_timeout() -> void:
 	is_reloading = false
 	can_shoot = true
 	ammo_changed.emit(current_ammo, max_ammo)
+	reload_cancelled.emit()

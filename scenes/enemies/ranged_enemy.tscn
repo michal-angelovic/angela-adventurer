@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://branged001"]
+
+[ext_resource type="Script" uid="uid://dhu5mgrqclfr1" path="res://scripts/enemies/ranged_enemy.gd" id="1_ranged"]
+[ext_resource type="Script" uid="uid://br64vp6rydd88" path="res://scripts/enemies/enemy_contact.gd" id="2_contact"]
+[ext_resource type="Texture2D" uid="uid://b4e7dorlx4f7j" path="res://assets/sprites/enemies/zoimbie1_gun.png" id="2_d5ppq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ranged"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ranged_hurt"]
+radius = 18.0
+
+[node name="RangedEnemy" type="CharacterBody2D" unique_id=1219251216]
+collision_layer = 4
+script = ExtResource("1_ranged")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1628123156]
+modulate = Color(0.6, 0.4, 1, 1)
+texture = ExtResource("2_d5ppq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1683506205]
+shape = SubResource("CircleShape2D_ranged")
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=1752558800]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("2_contact")
+damage = 5.0
+
+[node name="HurtBoxShape" type="CollisionShape2D" parent="HurtBox" unique_id=2126283682]
+shape = SubResource("CircleShape2D_ranged_hurt")

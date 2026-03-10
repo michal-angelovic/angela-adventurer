@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://benmbullet"]
+
+[ext_resource type="Script" uid="uid://l66061i3y0h" path="res://scripts/enemies/enemy_bullet.gd" id="1_bullet"]
+[ext_resource type="Texture2D" uid="uid://dr71aavmynvnj" path="res://assets/sprites/projectiles/tile_88.png" id="2_8gdk0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eb"]
+radius = 4.0
+
+[node name="EnemyBullet" type="Area2D" unique_id=72026773]
+collision_layer = 16
+collision_mask = 3
+script = ExtResource("1_bullet")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1458854375]
+modulate = Color(1, 0.3, 0.3, 1)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_8gdk0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1460458532]
+shape = SubResource("CircleShape2D_eb")

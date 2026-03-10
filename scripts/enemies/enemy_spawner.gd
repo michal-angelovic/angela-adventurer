@@ -14,7 +14,7 @@ var enemy_count: int = 0
 
 func _ready() -> void:
 	current_spawn_interval = initial_spawn_interval
-	add_child(spawn_timer)
+a	add_child(spawn_timer)
 	spawn_timer.timeout.connect(_on_spawn_timer_timeout)
 	spawn_timer.start(current_spawn_interval)
 

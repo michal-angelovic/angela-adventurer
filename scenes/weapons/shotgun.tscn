@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://cj8txuoy0otiy"]
+
+[ext_resource type="Script" uid="uid://b8bfr3n6k2ru1" path="res://scripts/weapons/weapon.gd" id="1_weapon"]
+[ext_resource type="PackedScene" uid="uid://dshotgunbullet1" path="res://scenes/weapons/shotgun_bullet.tscn" id="2_bullet"]
+[ext_resource type="Texture2D" uid="uid://babp84373cpdr" path="res://assets/sprites/weapons/weapon_machine.png" id="3_278ir"]
+[ext_resource type="AudioStream" uid="uid://cr2a8vu8xjq0f" path="res://assets/audio/sfx/shotgun.wav" id="4_sfx"]
+
+[node name="Shotgun" type="Node2D" unique_id=1334101335]
+script = ExtResource("1_weapon")
+weapon_name = "Shotgun"
+shoot_sound = ExtResource("4_sfx")
+bullet_scene = ExtResource("2_bullet")
+fire_rate = 0.8
+bullet_speed = 600.0
+damage = 15.0
+max_ammo = 6
+reload_time = 2.0
+bullet_count = 5
+spread_angle = 15.0
+bullet_lifetime = 0.8
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1789774161]
+position = Vector2(20, 0)
+texture = ExtResource("3_278ir")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=654865815]
+position = Vector2(40, 0)

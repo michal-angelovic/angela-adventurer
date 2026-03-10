@@ -9,10 +9,19 @@ signal died(enemy: CharacterBody2D)
 
 var current_health: float
 var player: CharacterBody2D = null
+var _hit_flash_shader: Shader = preload("res://resources/shaders/hit_flash.gdshader")
 
 func _ready() -> void:
 	current_health = max_health
-	# Find the player in the scene
+	add_to_group("enemies")
+	# Ensure each instance has its own ShaderMaterial for independent hit flash
+	var spr := get_node_or_null("Sprite2D") as Sprite2D
+	if spr:
+		var mat := ShaderMaterial.new()
+		mat.shader = _hit_flash_shader
+		mat.set_shader_parameter("flash_amount", 0.0)
+		mat.set_shader_parameter("flash_color", Color(1, 1, 1, 1))
+		spr.material = mat
 	await get_tree().process_frame
 	player = get_tree().get_first_node_in_group("player")
 
@@ -29,16 +38,12 @@ func _physics_process(_delta: float) -> void:
 func take_damage(amount: float) -> void:
 	current_health -= amount
 
-	# Hit flash using shader
+	# Hit flash using per-instance shader (preserves modulate color)
 	var sprite := get_node_or_null("Sprite2D") as Sprite2D
 	if sprite and sprite.material is ShaderMaterial:
 		var mat := sprite.material as ShaderMaterial
 		var tween := create_tween()
 		tween.tween_method(func(val: float) -> void: mat.set_shader_parameter("flash_amount", val), 1.0, 0.0, 0.15)
-	elif sprite:
-		var tween := create_tween()
-		tween.tween_property(sprite, "modulate", Color.RED, 0.05)
-		tween.tween_property(sprite, "modulate", Color.WHITE, 0.1)
 
 	if current_health <= 0.0:
 		die()

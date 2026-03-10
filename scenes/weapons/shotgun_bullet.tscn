@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://cgmkcyqlmuauq"]
+
+[ext_resource type="Script" uid="uid://bvbigoe24y0mi" path="res://scripts/weapons/bullet.gd" id="1_bullet"]
+[ext_resource type="Texture2D" uid="uid://cvhc0c5ckmb3q" path="res://assets/sprites/projectiles/Shotgun/ShotgunPNGs/Shotgun1.png" id="2_f1"]
+[ext_resource type="Texture2D" uid="uid://cuujtnd5vhlqn" path="res://assets/sprites/projectiles/Shotgun/ShotgunPNGs/Shotgun2.png" id="3_f2"]
+[ext_resource type="Texture2D" uid="uid://ci5c3cl7csoxi" path="res://assets/sprites/projectiles/Shotgun/ShotgunPNGs/Shotgun3.png" id="4_f3"]
+[ext_resource type="Texture2D" uid="uid://bvftwnobd1d6n" path="res://assets/sprites/projectiles/Shotgun/ShotgunPNGs/Shotgun4.png" id="5_f4"]
+[ext_resource type="Texture2D" uid="uid://cho4a5oynf7je" path="res://assets/sprites/projectiles/Shotgun/ShotgunPNGs/Shotgun5.png" id="6_f5"]
+[ext_resource type="Texture2D" uid="uid://cy8ucef34yure" path="res://assets/sprites/projectiles/Shotgun/ShotgunPNGs/Shotgun6.png" id="7_f6"]
+[ext_resource type="Texture2D" uid="uid://ymdpmc5orimr" path="res://assets/sprites/projectiles/Shotgun/ShotgunPNGs/Shotgun7.png" id="8_f7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_shotgun"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_f1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_f2")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_f3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_f4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_f5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_f6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_f7")
+}],
+"loop": false,
+"name": &"impact",
+"speed": 15.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bullet"]
+radius = 4.0
+
+[node name="ShotgunBullet" type="Area2D" unique_id=1868596493]
+collision_layer = 16
+collision_mask = 5
+script = ExtResource("1_bullet")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=650464127]
+rotation = -1.5708
+sprite_frames = SubResource("SpriteFrames_shotgun")
+animation = &"fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1883658245]
+shape = SubResource("CircleShape2D_bullet")

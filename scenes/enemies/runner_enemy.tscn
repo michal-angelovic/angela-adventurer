@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://brunner001"]
+
+[ext_resource type="Script" uid="uid://bbgvdjw575k8u" path="res://scripts/enemies/runner_enemy.gd" id="1_runner"]
+[ext_resource type="Script" uid="uid://br64vp6rydd88" path="res://scripts/enemies/enemy_contact.gd" id="2_contact"]
+[ext_resource type="Texture2D" uid="uid://cu3bcrv0jaeqn" path="res://assets/sprites/enemies/zoimbie1_hold.png" id="2_sxs6r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_runner"]
+radius = 14.0
+
+[node name="RunnerEnemy" type="CharacterBody2D" unique_id=381184690]
+collision_layer = 4
+script = ExtResource("1_runner")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2019170978]
+modulate = Color(0.5, 1, 0.5, 1)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_sxs6r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=549459329]
+shape = SubResource("CircleShape2D_runner")
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=857684411]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("2_contact")
+damage = 5.0
+
+[node name="HurtBoxShape" type="CollisionShape2D" parent="HurtBox" unique_id=662196835]
+shape = SubResource("CircleShape2D_runner")
