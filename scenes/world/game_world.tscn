@@ -5,7 +5,8 @@
 [ext_resource type="TileSet" uid="uid://b2qu2dt0dw5c0" path="res://resources/wall_layer/wall_layer_tileset.tres" id="2_iyuij"]
 [ext_resource type="PackedScene" path="res://scenes/enemies/wave_spawner.tscn" id="3_spawner"]
 [ext_resource type="PackedScene" uid="uid://bhud00001" path="res://scenes/ui/hud.tscn" id="4_hud"]
-[ext_resource type="PackedScene" path="res://scenes/ui/pause_menu.tscn" id="5_pause"]
+[ext_resource type="PackedScene" uid="uid://bpausemnu1" path="res://scenes/ui/pause_menu.tscn" id="5_pause"]
+[ext_resource type="Script" uid="uid://rya4b82fflpq" path="res://scripts/world/map_generator.gd" id="6_mapgen"]
 
 [node name="GameWorld" type="Node2D" unique_id=463108954]
 
@@ -18,6 +19,9 @@ tile_map_data = PackedByteArray("AAAtACIACwAAAAAAAAAtACMACwAAAAEAAAAtACQACwAAAAI
 tile_set = ExtResource("2_iyuij")
 
 [node name="ObjectLayer" type="Node2D" parent="." unique_id=293740848]
+
+[node name="MapGenerator" type="Node2D" parent="." unique_id=529401783]
+script = ExtResource("6_mapgen")
 
 [node name="Player" parent="." unique_id=336028770 instance=ExtResource("1_player")]
 position = Vector2(640, 360)

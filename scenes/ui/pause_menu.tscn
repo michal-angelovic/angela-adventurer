@@ -1,6 +1,7 @@
-[gd_scene format=3 uid="uid://bpausemnu1"]
+[gd_scene load_steps=3 format=3 uid="uid://bpausemnu1"]
 
 [ext_resource type="Script" path="res://scripts/ui/pause_menu.gd" id="1_pause"]
+[ext_resource type="Theme" path="res://resources/ui/kenney_theme.tres" id="2_theme"]
 
 [node name="PauseMenu" type="CanvasLayer"]
 layer = 10
@@ -20,12 +21,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -120.0
-offset_top = -100.0
-offset_right = 120.0
-offset_bottom = 100.0
+offset_left = -140.0
+offset_top = -110.0
+offset_right = 140.0
+offset_bottom = 110.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_theme")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
@@ -34,13 +36,16 @@ alignment = 1
 
 [node name="PausedLabel" type="Label" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 30
 text = "PAUSED"
 horizontal_alignment = 1
 
 [node name="ResumeButton" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+custom_minimum_size = Vector2(180, 50)
 text = "Resume"
 
 [node name="QuitButton" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+custom_minimum_size = Vector2(180, 50)
 text = "Quit"

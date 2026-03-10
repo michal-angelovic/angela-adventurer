@@ -1,0 +1,103 @@
+[gd_resource type="Theme" format=3 uid="uid://2cod27e7kjmj"]
+
+[ext_resource type="Texture2D" uid="uid://8cijiqfredbw" path="res://assets/sprites/ui/kenney_ui-pack/PNG/Blue/Default/button_rectangle_depth_gradient.png" id="1_btn_normal"]
+[ext_resource type="Texture2D" uid="uid://dyi0rqnm33emv" path="res://assets/sprites/ui/kenney_ui-pack/PNG/Blue/Default/button_rectangle_depth_gloss.png" id="2_btn_hover"]
+[ext_resource type="Texture2D" uid="uid://cc1syt1mo0ap1" path="res://assets/sprites/ui/kenney_ui-pack/PNG/Green/Default/button_rectangle_depth_gradient.png" id="3_btn_pressed"]
+[ext_resource type="Texture2D" uid="uid://c28st4waiii50" path="res://assets/sprites/ui/kenney_ui-pack/PNG/Grey/Default/button_rectangle_depth_gradient.png" id="4_btn_disabled"]
+[ext_resource type="Texture2D" uid="uid://b3pp6snyw8wym" path="res://assets/sprites/ui/kenney_ui-pack/PNG/Green/Default/slide_horizontal_color.png" id="5_bar_fill"]
+[ext_resource type="Texture2D" uid="uid://b8st0ay00vams" path="res://assets/sprites/ui/kenney_ui-pack/PNG/Blue/Default/slide_horizontal_grey.png" id="6_bar_bg"]
+[ext_resource type="FontFile" uid="uid://ppsutg7dbft3" path="res://assets/sprites/ui/kenney_ui-pack/Font/Kenney Future.ttf" id="7_font"]
+[ext_resource type="Texture2D" uid="uid://uu4weelppfvg" path="res://assets/sprites/ui/kenney_ui-pack/PNG/Blue/Default/button_rectangle_gradient.png" id="8_panel"]
+
+[sub_resource type="StyleBoxTexture" id="btn_disabled"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 12.0
+texture = ExtResource("4_btn_disabled")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxEmpty" id="btn_focus"]
+
+[sub_resource type="StyleBoxTexture" id="btn_hover"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 12.0
+texture = ExtResource("2_btn_hover")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id="btn_normal"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 12.0
+texture = ExtResource("1_btn_normal")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id="btn_pressed"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 12.0
+texture = ExtResource("3_btn_pressed")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id="panel_style"]
+content_margin_left = 20.0
+content_margin_top = 16.0
+content_margin_right = 20.0
+content_margin_bottom = 16.0
+texture = ExtResource("8_panel")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxTexture" id="bar_bg"]
+texture = ExtResource("6_bar_bg")
+texture_margin_left = 8.0
+texture_margin_top = 6.0
+texture_margin_right = 8.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="bar_fill"]
+texture = ExtResource("5_bar_fill")
+texture_margin_left = 8.0
+texture_margin_top = 6.0
+texture_margin_right = 8.0
+texture_margin_bottom = 6.0
+
+[resource]
+default_font = ExtResource("7_font")
+default_font_size = 20
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_disabled_color = Color(0.7, 0.7, 0.7, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/font_sizes/font_size = 20
+Button/styles/disabled = SubResource("btn_disabled")
+Button/styles/focus = SubResource("btn_focus")
+Button/styles/hover = SubResource("btn_hover")
+Button/styles/normal = SubResource("btn_normal")
+Button/styles/pressed = SubResource("btn_pressed")
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0.5)
+Label/constants/shadow_offset_x = 2
+Label/constants/shadow_offset_y = 2
+Label/font_sizes/font_size = 20
+PanelContainer/styles/panel = SubResource("panel_style")
+ProgressBar/styles/background = SubResource("bar_bg")
+ProgressBar/styles/fill = SubResource("bar_fill")

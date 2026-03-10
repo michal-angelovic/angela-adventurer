@@ -8,6 +8,7 @@ signal died
 
 var current_health: float
 var is_invincible: bool = false
+var _blood_scene: PackedScene = preload("res://scenes/effects/blood_splatter.tscn")
 
 @onready var invincibility_timer: Timer = Timer.new()
 
@@ -23,6 +24,9 @@ func take_damage(amount: float) -> void:
 		return
 	current_health = max(current_health - amount, 0.0)
 	health_changed.emit(current_health, max_health)
+	var blood := _blood_scene.instantiate()
+	blood.global_position = get_parent().global_position
+	get_tree().current_scene.add_child(blood)
 
 	if current_health <= 0.0:
 		died.emit()

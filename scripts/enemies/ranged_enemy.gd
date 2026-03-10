@@ -17,6 +17,9 @@ var current_health: float
 var player: CharacterBody2D = null
 var can_shoot: bool = true
 var _hit_flash_shader: Shader = preload("res://resources/shaders/hit_flash.gdshader")
+var _blood_scene: PackedScene = preload("res://scenes/effects/blood_splatter.tscn")
+var _health_bar: Node2D = null
+var _health_bar_scene: PackedScene = preload("res://scenes/enemies/enemy_health_bar.tscn")
 
 @onready var shoot_timer: Timer = Timer.new()
 
@@ -33,6 +36,9 @@ func _ready() -> void:
 	add_child(shoot_timer)
 	shoot_timer.one_shot = true
 	shoot_timer.timeout.connect(func(): can_shoot = true)
+	_health_bar = _health_bar_scene.instantiate()
+	add_child(_health_bar)
+	_health_bar.setup(max_health, current_health)
 	await get_tree().process_frame
 	player = get_tree().get_first_node_in_group("player")
 
@@ -73,6 +79,11 @@ func _shoot_at_player() -> void:
 
 func take_damage(amount: float) -> void:
 	current_health -= amount
+	var blood := _blood_scene.instantiate()
+	blood.global_position = global_position
+	get_tree().current_scene.add_child(blood)
+	if _health_bar:
+		_health_bar.update_health(current_health)
 	var sprite := get_node_or_null("Sprite2D") as Sprite2D
 	if sprite and sprite.material is ShaderMaterial:
 		var mat := sprite.material as ShaderMaterial

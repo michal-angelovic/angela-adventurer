@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bgameover1"]
+[gd_scene load_steps=3 format=3 uid="uid://bgameover1"]
 
 [ext_resource type="Script" path="res://scripts/ui/game_over.gd" id="1_gameover"]
+[ext_resource type="Theme" path="res://resources/ui/kenney_theme.tres" id="2_theme"]
 
 [node name="GameOver" type="CanvasLayer"]
 layer = 10
@@ -20,37 +21,45 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -120.0
-offset_right = 150.0
-offset_bottom = 120.0
+offset_left = -170.0
+offset_top = -150.0
+offset_right = 170.0
+offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_theme")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
-theme_override_constants/separation = 15
+theme_override_constants/separation = 16
 alignment = 1
 
 [node name="GameOverLabel" type="Label" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_colors/font_color = Color(1, 0.3, 0.3, 1)
 text = "GAME OVER"
 horizontal_alignment = 1
 
 [node name="FinalScoreLabel" type="Label" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 22
 text = "Score: 0"
 horizontal_alignment = 1
 
 [node name="HighScoreLabel" type="Label" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(1, 1, 0.4, 1)
 text = ""
 horizontal_alignment = 1
 
 [node name="RestartButton" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+custom_minimum_size = Vector2(200, 50)
 text = "Restart"
 
 [node name="MenuButton" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+custom_minimum_size = Vector2(200, 50)
 text = "Main Menu"
